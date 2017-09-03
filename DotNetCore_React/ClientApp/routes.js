@@ -12,7 +12,7 @@ import Login from './views/Front/User/Login'
 import Forgot from './views/Front/User/Forgot'
 import changePwd from './views/Front/User/changePwd'
 
-import Dashboard from './views/Backend/Dashboard/Dashboard'
+import Dashboard from './components/Backend/Breadcrumb'
 import Role_Create from './views/Backend/Role/Role_Create'
 import Role_Delete from './views/Backend/Role/Role_Delete'
 import Role_Edit from './views/Backend/Role/Role_Edit'

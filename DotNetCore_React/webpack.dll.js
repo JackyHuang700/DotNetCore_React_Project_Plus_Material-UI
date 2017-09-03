@@ -31,6 +31,7 @@ module.exports = (env) => {
                 'react-datepicker',
                 "moment",
                 "./node_modules/react-datepicker/dist/react-datepicker.css",
+
             ],
         },
         resolve: {

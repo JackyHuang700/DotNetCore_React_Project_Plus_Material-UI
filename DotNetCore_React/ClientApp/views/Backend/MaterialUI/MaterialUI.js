@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
-// import Button from 'material-ui/Button';
+
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
+import AppBar from 'material-ui/AppBar';
+
 
 export default class MaterialUI extends Component {
     constructor(props) {
@@ -8,14 +12,14 @@ export default class MaterialUI extends Component {
 
         };
     }
+
+
     render() {
 
         return (
-    //         <Button>
-    //   Hello World
-    // </Button>
-    null
+            <MuiThemeProvider>
+    <div>Hello world</div>
+  </MuiThemeProvider>
         )
     }
 }
-

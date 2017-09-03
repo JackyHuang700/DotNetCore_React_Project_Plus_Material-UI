@@ -7,7 +7,6 @@ import Breadcrumb from '../components/Backend/Breadcrumb';
 import Footer from '../components/Backend/Footer';
 import {Auth} from '../helpers/auth'
 
-// import Dashboard from '../views/Backend/Dashboard/Dashboard'
 
 export function BackendRoute({ component: Component, ...rest }) {
   return (
