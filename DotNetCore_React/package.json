@@ -4,8 +4,8 @@
   "scripts": {
     "compile": "webpack --config ./webpack.config.js",
     "compile:dll": "webpack --config ./webpack.dll.js",
-    "compile:product": "webpack --env=product --config ./webpack.config.js",
-    "dev-watch": "webpack-dev-server --hot --open --env=dev --config ./webpack.config.js",
+    "compile:product": "cross-env NODE_ENV=product webpack --config ./webpack.config.js",
+    "dev-watch": "cross-env NODE_ENV=dev webpack-dev-server --progress --hot --open --config ./webpack.config.js",
     "dotnet-watch": "dotnet watch run",
     "start": "concurrently \"npm run dotnet-watch\" \"npm run dev-watch\" ",
     "start:dev": "npm run compile:dll & npm run dev-watch"
@@ -28,6 +28,7 @@
     "bootstrap": "3.3.7",
     "chart.js": "2.5.0",
     "concurrently": "^3.5.0",
+    "cross-env": "^5.0.5",
     "css-loader": "0.28.1",
     "event-source-polyfill": "0.0.9",
     "extract-text-webpack-plugin": "2.1.0",
@@ -59,6 +60,7 @@
   "dependencies": {
     "axios": "^0.16.2",
     "babel-runtime": "^6.25.0",
+    "material-ui": "^1.0.0-beta.8",
     "moment": "^2.18.1",
     "query-string": "^5.0.0",
     "react-bootstrap-table": "^4.0.0",

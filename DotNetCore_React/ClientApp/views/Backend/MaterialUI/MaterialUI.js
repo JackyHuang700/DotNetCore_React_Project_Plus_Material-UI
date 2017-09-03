@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
+import Button from 'material-ui/Button';
+// import aa from './aa.js';
 
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { MuiThemeProvider,  createMuiTheme} from 'material-ui/styles';
+  
 
-import AppBar from 'material-ui/AppBar';
+const theme = createMuiTheme({
+   
+  });
 
 
 export default class MaterialUI extends Component {
@@ -17,9 +22,16 @@ export default class MaterialUI extends Component {
     render() {
 
         return (
-            <MuiThemeProvider>
-    <div>Hello world</div>
-  </MuiThemeProvider>
+            <MuiThemeProvider theme={theme}>
+                <div>
+               
+                    <Button >Default</Button>
+                </div>
+
+            </MuiThemeProvider>
+
         )
     }
 }
+
+

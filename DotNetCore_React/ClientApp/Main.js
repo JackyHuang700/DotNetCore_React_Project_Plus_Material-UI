@@ -22,6 +22,7 @@ const renderApp = appRoutes => {
 
 renderApp(routes);
 
+
 //Hot Module Replacement API
 if (module.hot) {
   module.hot.accept('./routes', () => {

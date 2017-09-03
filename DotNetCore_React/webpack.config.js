@@ -8,61 +8,29 @@ const sourcePath = path.resolve(__dirname, '../wwwroot');
 //共用設定loader檔
 const loaders = require('./webpack.loaders.js');
 
-//https://doc.webpack-china.org/guides/production/
-module.exports = (env) => {
-    return [{
-        // devtool: 'source-map',
-        // devtool: 'cheap-eval-source-map',
-        // devtool: 'eval-source-map',
-        devtool: 'cheap-module-eval-source-map',
-        // devtool: 'cheap-eval-source-map',
-        entry: {
-            'Main': [
-                `./ClientApp/Main.js`
-            ],
-        },
-        output: {
-            path: path.join(__dirname, bundleOutputDir),
-            filename: '[name].js',
-            publicPath: '/dist/'
-        },
-        context: __dirname,
-        devServer: {
-            contentBase: `${sourcePath}/dist/`,
-            compress: true,
-            inline: true,
-            hot: true,
-            proxy: {
-                '*': {
-                    target: 'http://localhost:60658',
-                }
-            },
-            // watch: true,
-            // devtool: "eval",
-            port: 8080,
-        },
-        module: loaders,
-        plugins: [
 
-            // new webpack.DefinePlugin({
-            // 'process.env.NODE_ENV': JSON.stringify('production')
-            // }),
-            // new webpack.SourceMapDevToolPlugin({
-            //     filename: '[file].map',
-            //      exclude: ['vendor.js',],
-            //       columns: false
-            // }),
+const NODE_ENV = process.env.NODE_ENV;
+const entryFile = (NODE_ENV === "dev" ? [
+    "react-hot-loader/patch",
+] : []).concat([
+    `./ClientApp/Main.js`
+]);
 
 
-            new webpack.optimize.ModuleConcatenationPlugin(),
-            new webpack.DllReferencePlugin({
-                context: __dirname,
-                manifest: require(`${path.join(__dirname, bundleOutputDir)}/commons-manifest.json`),
-            }),
-        ].concat((env) === "dev" ? [
+let plugins = [];
+
+if (NODE_ENV === 'dev') {
+    plugins = plugins.concat(
+        [
             //開發
             new webpack.HotModuleReplacementPlugin(),
-        ] : []).concat((env) === "product" ? [
+        ]
+    );
+}
+
+if (NODE_ENV === 'product') {
+    plugins = plugins.concat(
+        [
             //產品
             //****************** */
             //UglifyJsPlugin setting_1
@@ -99,9 +67,48 @@ module.exports = (env) => {
                 // (Only use these entries)
                 minChunks: Infinity,
             }),
-        ] : [])
-    }];
+        ]
+    );
+}
+
+
+
+
+
+//https://doc.webpack-china.org/guides/production/
+module.exports = {
+    // devtool: 'source-map',
+    // devtool: 'cheap-eval-source-map',
+    // devtool: 'eval-source-map',
+    devtool: 'cheap-module-eval-source-map',
+    // devtool: 'cheap-eval-source-map',
+    entry: {
+        'Main': entryFile,
+    },
+    output: {
+        path: path.join(__dirname, bundleOutputDir),
+        filename: '[name].js',
+        publicPath: '/dist/'
+    },
+    context: __dirname,
+    devServer: {
+        contentBase: `${sourcePath}/dist/`,
+        compress: true,
+        inline: true,
+        hot: true,
+        proxy: {
+            '*': {
+                target: 'http://localhost:60658',
+            }
+        },
+        // watch: true,
+        port: 8080,
+    },
+    module: loaders,
+    plugins: plugins,
 };
+
+//https://github.com/callemall/material-ui/blob/master/docs/webpack-dev-server.config.js
 
 
 

@@ -5,7 +5,7 @@ import Sidebar from '../components/Backend/Sidebar';
 import Breadcrumb from '../components/Backend/Breadcrumb';
 // import Aside from '../components/Backend/Aside';
 import Footer from '../components/Backend/Footer';
-import {Auth} from '../helpers/auth'
+import { Auth } from '../helpers/auth'
 
 
 export function BackendRoute({ component: Component, ...rest }) {
