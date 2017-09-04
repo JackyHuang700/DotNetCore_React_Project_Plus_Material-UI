@@ -8,6 +8,10 @@ const sourcePath = path.resolve(__dirname, '../wwwroot');
 //共用設定loader檔
 const loaders = require('./webpack.loaders.js');
 
+const os = require('os');
+const HappyPack = require('happypack');
+const happThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
+
 
 const NODE_ENV = process.env.NODE_ENV;
 const entryFile = (NODE_ENV === "dev" ? [
@@ -20,54 +24,57 @@ const entryFile = (NODE_ENV === "dev" ? [
 let plugins = [];
 
 if (NODE_ENV === 'dev') {
-    plugins = plugins.concat(
-        [
-            //開發
-            new webpack.HotModuleReplacementPlugin(),
-        ]
-    );
-}
+    plugins = plugins.concat([
+        //開發
+        new webpack.HotModuleReplacementPlugin(),
 
-if (NODE_ENV === 'product') {
-    plugins = plugins.concat(
-        [
-            //產品
-            //****************** */
-            //UglifyJsPlugin setting_1
-            new webpack.optimize.UglifyJsPlugin({
-                unused: true,
-                sourceMap: true,
-                warnings: false,
-            }),
 
-            //UglifyJsPlugin setting_2
-            // new webpack.optimize.UglifyJsPlugin({
-            //     compress: {
-            //         warnings: false,
-            //     },
-            //     sourceMap: true,
-            //     unused: true,
-            // }),
-            // new webpack.LoaderOptionsPlugin({
-            //     minimize: true
-            // }),
-            //****************** */
+        new HappyPack({
+            id: 'jsx',
+            cache: true,
+            loaders: ['babel-loader?cacheDirectory=true'],
+            threadPool: happThreadPool
+        }),
+    ]);
+} else if (NODE_ENV === 'product') {
+    plugins = plugins.concat([
+        //產品
+        //****************** */
+        //UglifyJsPlugin setting_1
+        new webpack.optimize.UglifyJsPlugin({
+            unused: true,
+            sourceMap: true,
+            warnings: false,
+        }),
 
-            new webpack.optimize.CommonsChunkPlugin({
-                name: "commons",
-                // (the commons chunk name)
+        //UglifyJsPlugin setting_2
+        // new webpack.optimize.UglifyJsPlugin({
+        //     compress: {
+        //         warnings: false,
+        //     },
+        //     sourceMap: true,
+        //     unused: true,
+        // }),
+        // new webpack.LoaderOptionsPlugin({
+        //     minimize: true
+        // }),
+        //****************** */
 
-                filename: "commons.js",
-                // (the filename of the commons chunk)
+        new webpack.optimize.CommonsChunkPlugin({
+            name: "commons",
+            // (the commons chunk name)
 
-                // minChunks: 3,.
-                // (Modules must be shared between 3 entries)
+            filename: "commons.js",
+            // (the filename of the commons chunk)
 
-                // chunks: ["pageA", "pageB"],
-                // (Only use these entries)
-                minChunks: Infinity,
-            }),
-        ]
+            // minChunks: 3,.
+            // (Modules must be shared between 3 entries)
+
+            // chunks: ["pageA", "pageB"],
+            // (Only use these entries)
+            minChunks: Infinity,
+        }),
+    ]
     );
 }
 

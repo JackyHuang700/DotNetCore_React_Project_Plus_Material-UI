@@ -5,10 +5,14 @@
     "compile": "webpack --config ./webpack.config.js",
     "compile:dll": "webpack --config ./webpack.dll.js",
     "compile:product": "cross-env NODE_ENV=product webpack --config ./webpack.config.js",
-    "dev-watch": "cross-env NODE_ENV=dev webpack-dev-server --progress --hot --open --config ./webpack.config.js",
-    "dotnet-watch": "dotnet watch run",
+
+    "dotnet-watch": "dotnet run",
+
+    "dev-watch": "",
+    "dev-watch:server": "cross-env NODE_ENV=dev webpack-dev-server --progress --hot --open --config ./webpack.config.js",
+    
     "start": "concurrently \"npm run dotnet-watch\" \"npm run dev-watch\" ",
-    "start:dev": "npm run compile:dll & npm run dev-watch"
+    "start:dev": "npm run compile:dll & npm run dev-watch:server"
   },
   "devDependencies": {
     "@types/history": "4.5.1",
@@ -36,9 +40,8 @@
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",
     "gulp-sass": "^3.1.0",
+    "happypack": "^4.0.0-beta.5",
     "history": "^4.6.1",
-    "isomorphic-fetch": "2.2.1",
-    "jquery": "3.2.1",
     "json-loader": "0.5.4",
     "node-sass": "^4.5.3",
     "react": "15.5.4",
