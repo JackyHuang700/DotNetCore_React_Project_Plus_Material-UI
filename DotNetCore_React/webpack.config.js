@@ -31,7 +31,7 @@ if (NODE_ENV === 'dev') {
 
 
         new HappyPack({
-            id: 'jsx',
+            id: 'js',
             cache: true,
             loaders: ['babel-loader?cacheDirectory=true'],
             threadPool: happThreadPool
