@@ -9,7 +9,7 @@
     "dotnet-watch": "dotnet run",
 
     "dev-watch": "",
-    "dev-watch:server": "cross-env NODE_ENV=dev webpack-dev-server --progress --hot --open --config ./webpack.config.js",
+    "dev-watch:server": "cross-env NODE_ENV=dev webpack-dev-server --progress --color --config ./webpack.config.js",
     
     "start": "concurrently \"npm run dotnet-watch\" \"npm run dev-watch\" ",
     "start:dev": "npm run compile:dll & npm run dev-watch:server"

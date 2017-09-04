@@ -3,7 +3,10 @@ const NODE_ENV = process.env.NODE_ENV;
 var jsUse = [];
 if (NODE_ENV === "dev") {
     jsUse = ['happypack/loader?id=jsx'];
-} else if (NODE_ENV === 'product') {
+} 
+else 
+    // if (NODE_ENV === 'product') 
+    {
     jsUse = ['babel-loader'];
 }
 

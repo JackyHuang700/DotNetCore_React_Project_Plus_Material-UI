@@ -18,8 +18,7 @@ let plugins = [
     }),
 ];
 if (NODE_ENV === "product") {
-    plugins = plugins.concat(
-        [
+    plugins = plugins.concat([
             //產品
             new webpack.optimize.UglifyJsPlugin({
                 unused: true,

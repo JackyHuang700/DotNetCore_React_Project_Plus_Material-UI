@@ -8,6 +8,7 @@ const sourcePath = path.resolve(__dirname, '../wwwroot');
 //共用設定loader檔
 const loaders = require('./webpack.loaders.js');
 
+//HappyPack
 const os = require('os');
 const HappyPack = require('happypack');
 const happThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
@@ -101,8 +102,12 @@ module.exports = {
     devServer: {
         contentBase: `${sourcePath}/dist/`,
         compress: true,
+        noInfo: true,
         inline: true,
+        open: true,
+        openPage: 'MaterialUI',
         hot: true,
+        hotOnly: true,
         proxy: {
             '*': {
                 target: 'http://localhost:60658',
