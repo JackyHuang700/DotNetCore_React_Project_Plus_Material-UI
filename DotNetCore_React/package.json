@@ -5,12 +5,9 @@
     "compile": "webpack --config ./webpack.config.js",
     "compile:dll": "webpack --config ./webpack.dll.js",
     "compile:product": "cross-env NODE_ENV=product webpack --config ./webpack.config.js",
-
     "dotnet-watch": "dotnet run",
-
     "dev-watch": "",
     "dev-watch:server": "cross-env NODE_ENV=dev LOADER_ENV=happypack webpack-dev-server --progress --color --config ./webpack.config.js",
-    
     "start": "concurrently \"npm run dotnet-watch\" \"npm run dev-watch\" ",
     "start:dev": "npm run compile:dll & npm run dev-watch:server"
   },
@@ -64,6 +61,7 @@
     "axios": "^0.16.2",
     "babel-runtime": "^6.25.0",
     "material-ui": "^1.0.0-beta.8",
+    "material-ui-icons": "^1.0.0-beta.5",
     "moment": "^2.18.1",
     "query-string": "^5.0.0",
     "react-bootstrap-table": "^4.0.0",

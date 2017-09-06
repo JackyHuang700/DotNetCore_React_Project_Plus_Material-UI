@@ -7,15 +7,28 @@ import history from './history'
 import routes from './routes'
 import '../node_modules/react-bootstrap-table/dist/react-bootstrap-table-all.min.css';
 
+//material-ui
+
+import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
+
+
+const theme = createMuiTheme({
+
+});
+
+
+
 // Views
 const renderApp = appRoutes => {
   ReactDOM.render((
     <AppContainer>
-      <Router history={history}>
-        <div>
-          {appRoutes}
-        </div>
-      </Router>
+      <MuiThemeProvider theme={theme}>
+        <Router history={history}>
+          <div>
+            {appRoutes}
+          </div>
+        </Router>
+      </MuiThemeProvider>
     </AppContainer>
   ), document.getElementById('react-app'));
 }

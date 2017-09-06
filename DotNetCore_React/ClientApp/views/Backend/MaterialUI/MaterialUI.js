@@ -1,13 +1,6 @@
 import React, { Component } from 'react';
 import Button from 'material-ui/Button';
-// import aa from './aa.js';
-
-import { MuiThemeProvider,  createMuiTheme} from 'material-ui/styles';
-  
-
-const theme = createMuiTheme({
-   
-  });
+import Asdasd from './aa.js';
 
 
 export default class MaterialUI extends Component {
@@ -22,13 +15,14 @@ export default class MaterialUI extends Component {
     render() {
 
         return (
-            <MuiThemeProvider theme={theme}>
+           
                 <div>
-               
-                    <Button >Default</Button>
+                    <Asdasd />
+
+                   
                 </div>
 
-            </MuiThemeProvider>
+          
 
         )
     }
