@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ButtonToolbar, Button, Modal, Container, Row, Col } from 'reactstrap';
+import { ButtonToolbar, Modal, Container, Row, Col } from 'reactstrap';
 
 import { BootstrapTable, TableHeaderColumn, ButtonGroup } from 'react-bootstrap-table';
 
@@ -7,6 +7,9 @@ import axios from 'axios';
 import history from '../../../history'
 
 import { news_Enum } from '../../../helpers/enum/GeneralEnum';
+
+import Button from 'material-ui/Button';
+import ModeEditIcon from 'material-ui-icons/ModeEdit';
 
 export default class News_View extends Component {
 
@@ -38,15 +41,19 @@ export default class News_View extends Component {
         });
     }
 
-    /**
-     * ���
-     */
+    
     createCustomButtonGroup = props => {
         return (
+            // <Button color="primary" onClick={this.OnClick_Create}>建立</Button>
             <ButtonToolbar className='' sizeClass='btn-group-md'>
                 {this.props.dispaly_button_create &&
-                    <Button color="primary" onClick={this.OnClick_Create}>建立</Button>}
+                    <Button raised color="primary" onClick={this.OnClick_Create}>
+                        建立
+                    </Button>
+                }
                 {'\u00A0'}
+
+
                 {props.exportCSVBtn}
             </ButtonToolbar>
         );
@@ -55,9 +62,20 @@ export default class News_View extends Component {
     buttonFormatter(cell, row) {
         return (
             <ButtonGroup className='' sizeClass='btn-group-md'>
-                {this.props.display_button_edit && <Button color="warning" data-id={row.id} onClick={this.OnClick_Edit}><i className="fa fa-pencil" aria-hidden="true"></i></Button>}
+                {this.props.display_button_edit &&
+                    //<Button color="warning" data-id={row.id} onClick={this.OnClick_Edit}><i className="fa fa-pencil" aria-hidden="true"></i></Button>
+                    <Button fab color="accent" aria-label="edit" data-id={row.id} onClick={this.OnClick_Edit}>
+                        <ModeEditIcon />
+                    </Button>
+                }
                 {'\u00A0'}
-                {this.props.display_button_del && <Button color="danger" data-id={row.id} onClick={this.OnClick_Delete}><i className="fa fa-trash" aria-hidden="true"></i></Button>}
+
+                {this.props.display_button_del &&
+                    //<Button color="danger" data-id={row.id} onClick={this.OnClick_Delete}><i className="fa fa-trash" aria-hidden="true"></i></Button>
+                    <Button fab color="accent" aria-label="edit" data-id={row.id} onClick={this.OnClick_Delete}>
+                        <i className="fa fa-trash" aria-hidden="true"></i>
+                    </Button>
+                }
             </ButtonGroup>
         );
     }
@@ -120,8 +138,8 @@ export default class News_View extends Component {
         };
 
         const StatusType = {
-            0 : news_Enum.STOP.name,
-            1 : news_Enum.NORMAL.name
+            0: news_Enum.STOP.name,
+            1: news_Enum.NORMAL.name
         };
 
 
@@ -143,16 +161,16 @@ export default class News_View extends Component {
                                 search
                                 exportCSV>
                                 {this.props.display_listImage ? <TableHeaderColumn dataField='listImage'>列表圖片</TableHeaderColumn> : null}
-                                {this.props.display_title ? <TableHeaderColumn dataField='title' dataSort={true} filter={ { type: 'TextFilter', delay: 1000 } }>標題</TableHeaderColumn> : null}
-                                {this.props.display_category ? <TableHeaderColumn dataField='category' dataSort={true} filter={ { type: 'TextFilter', delay: 1000 } }>類別</TableHeaderColumn> : null}
+                                {this.props.display_title ? <TableHeaderColumn dataField='title' dataSort={true} filter={{ type: 'TextFilter', delay: 1000 }}>標題</TableHeaderColumn> : null}
+                                {this.props.display_category ? <TableHeaderColumn dataField='category' dataSort={true} filter={{ type: 'TextFilter', delay: 1000 }}>類別</TableHeaderColumn> : null}
                                 {this.props.display_priority ? <TableHeaderColumn dataField='priority' dataSort={true}>列表排序</TableHeaderColumn> : null}
                                 {this.props.display_startDate ? <TableHeaderColumn dataField='startDate' dataSort={true}>上架時間</TableHeaderColumn> : null}
                                 {this.props.display_endDate ? <TableHeaderColumn dataField='endDate' dataSort={true}>下架時間</TableHeaderColumn> : null}
-                                {this.props.display_status ? <TableHeaderColumn dataField='status' dataSort={true} dataFormat={this.Formatter_Status} filter={ { type: 'SelectFilter', options: StatusType } }>狀態</TableHeaderColumn> : null}
+                                {this.props.display_status ? <TableHeaderColumn dataField='status' dataSort={true} dataFormat={this.Formatter_Status} filter={{ type: 'SelectFilter', options: StatusType }}>狀態</TableHeaderColumn> : null}
                                 {this.props.display_createDate ? <TableHeaderColumn dataField='createDate' dataSort={true}>建立時間</TableHeaderColumn> : null}
-                                {this.props.display_createUser ? <TableHeaderColumn dataField='createUser' dataSort={true} filter={ { type: 'TextFilter', delay: 1000 } }>建立帳號</TableHeaderColumn> : null}
+                                {this.props.display_createUser ? <TableHeaderColumn dataField='createUser' dataSort={true} filter={{ type: 'TextFilter', delay: 1000 }}>建立帳號</TableHeaderColumn> : null}
                                 {this.props.display_updateDate ? <TableHeaderColumn dataField='updateDate' dataSort={true}>更新時間</TableHeaderColumn> : null}
-                                {this.props.display_updateUser ? <TableHeaderColumn dataField='updateUser' dataSort={true} filter={ { type: 'TextFilter', delay: 1000 } }>更新帳號</TableHeaderColumn> : null}
+                                {this.props.display_updateUser ? <TableHeaderColumn dataField='updateUser' dataSort={true} filter={{ type: 'TextFilter', delay: 1000 }}>更新帳號</TableHeaderColumn> : null}
                                 <TableHeaderColumn isKey dataField="button" dataFormat={this.buttonFormatter}></TableHeaderColumn>
                             </BootstrapTable>
                         </div>

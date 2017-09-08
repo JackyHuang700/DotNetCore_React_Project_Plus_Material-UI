@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Input, FormGroup } from 'reactstrap';
 import EasyForm, { Field, FieldGroup } from 'react-easyform';
 
+//material-ui
+import TextField from 'material-ui/TextField';
+
 export default class TextInput extends Component {
 
     constructor(props) {
@@ -60,10 +63,28 @@ export default class TextInput extends Component {
         delete myProps.divClassName;
         delete myProps.is_Table;
 
-        let baseField = <Field {...myProps} />
-        baseField = React.cloneElement(baseField, {
+        // let baseField = <Field {...myProps} />
+
+        // baseField = React.cloneElement(baseField, {
+        //     id: this.props.name
+        // });
+
+
+
+        //new
+        let baseField2 = <TextField
+            {...myProps}
+            label="With placeholder multiline"
+            placeholder="Placeholder"
+            multiline
+
+        />;
+
+        baseField2 = React.cloneElement(baseField2, {
             id: this.props.name
         });
+
+
 
         if (!this.props.display) {
             return (<div></div>)
@@ -72,8 +93,8 @@ export default class TextInput extends Component {
 
         return (
             this.props.is_Table ?
-                this.IsTable(baseField) :
-                this.UnTable(baseField)
+                this.IsTable(baseField2) :
+                this.UnTable(baseField2)
         )
     }
 }
