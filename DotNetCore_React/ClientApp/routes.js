@@ -59,6 +59,8 @@ import Product_Delete from './views/Backend/Product/Product_Delete'
 import Product_Edit from './views/Backend/Product/Product_EDIT'
 
 import MaterialUI from './views/Backend/MaterialUI/MaterialUI'
+
+import ReactRedux from './views/Backend/ReactRedux/containers/ReactRedux'
 /**
   * 
   * 已知Breadcrumb�呼�這隻
@@ -108,9 +110,10 @@ export default (
     <BackendRoute path='/Product/Delete/:id/:delete' component={Product_Delete} />
     <BackendRoute path='/Product/Edit/:id' component={Product_Edit} />
 
-
-
     <BackendRoute path='/MaterialUI' component={MaterialUI} />
+
+
+    <BackendRoute path='/ReactRedux' component={ReactRedux} />
 
 
     <Route render={() => <h3>No Match Route</h3>} />

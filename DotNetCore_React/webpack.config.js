@@ -101,8 +101,9 @@ module.exports = {
     context: __dirname,
     devServer: {
         contentBase: `${sourcePath}/dist/`,
-        compress: true,
-        noInfo: true,
+        publicPath: `/dist/`,
+        // compress: true,
+        // noInfo: true,
         inline: true,
         open: true,
         openPage: 'MaterialUI',
