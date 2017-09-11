@@ -73,8 +73,9 @@ class ShowMsg extends Component {
                 <ul>
                     {todoList.map((todo, index) => {
                         return (
-                            <li>
+                            <li key={index}>
                                 {todo}
+                                {'\u00A0'}{'\u00A0'}
                                 <button onClick={deleteTodoAction.bind(this, index)}> -- </button>
                             </li>
                         );

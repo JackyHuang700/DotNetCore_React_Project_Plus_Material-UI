@@ -9,6 +9,7 @@ import * as counterAction from '../actions/counterAction';
 
 //new Component
 import TodoList from './TodoList';
+import UserNameList from './UserNameList';
 
 
 class ReactRedux extends Component {
@@ -27,13 +28,18 @@ class ReactRedux extends Component {
 
         return (
             <div>
+                <h1>計數器</h1>
                 <Show number={counter.number} />
                 <Btn
                     increment={counterAction.incrementAction}
                     decrement={counterAction.decrementAction}
                 />
-                <br />
+                <hr />
+                <h1>TodoList</h1>
                 <TodoList />
+                <hr />
+                <h1>Username List</h1>
+                <UserNameList />
             </div>
         );
     }
