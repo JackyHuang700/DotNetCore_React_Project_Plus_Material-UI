@@ -7,13 +7,14 @@ import Btn from '../components/Btn';
 
 import * as counterAction from '../actions/counterAction';
 
+//new Component
+import TodoList from './TodoList';
+
+
 class ReactRedux extends Component {
 
     constructor(props) {
         super(props);
-        // this.state = {
-        //     number: 0,
-        // };
     }
 
     render() {
@@ -21,16 +22,18 @@ class ReactRedux extends Component {
 
         const {
             counterAction,
-            number,
+            counter,
         } = this.props;
 
         return (
             <div>
-                <Show number={number} />
+                <Show number={counter.number} />
                 <Btn
                     increment={counterAction.incrementAction}
                     decrement={counterAction.decrementAction}
                 />
+                <br />
+                <TodoList />
             </div>
         );
     }
@@ -41,7 +44,7 @@ class ReactRedux extends Component {
 //
 const mapStateToProps = (state) => {
     return {
-        number: state.conuterReducer,
+        counter: state.conuterReducer,
     }
 };
 

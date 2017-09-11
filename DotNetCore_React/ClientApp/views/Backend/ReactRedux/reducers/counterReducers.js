@@ -1,17 +1,27 @@
 //提升維護性只會有一個
-
-export default function conuterReducer(state = 0, action) {
+const init = {
+    "number": 0,
+};
+export default function conuterReducer(state = init, action) {
     switch (action.type) {
         case "INCREMENT":
-            var newState = Object.assign({}, state);
-            newState = state + 1;
+            state = {
+                ...state,
+                "number": state.number + 1,
+            };
+            // var newState = Object.assign({}, state);
+            // newState = state + 1;
 
-            return newState;
+            return state;
         case "DECREMENT":
-            var newState = Object.assign({}, state);
-            newState = state - 1;
+            state = { ...state, 
+                "number": state.number - 1, 
+            };
 
-            return newState;
+            // var newState = Object.assign({}, state);
+            // newState = state - 1;
+
+            return state;
         default:
             return state;
     }

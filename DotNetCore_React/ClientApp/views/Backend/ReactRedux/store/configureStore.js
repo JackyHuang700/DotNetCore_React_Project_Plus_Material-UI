@@ -5,9 +5,11 @@ import {
 
 
 import conuterReducer from '../reducers/counterReducers';
+import todoListReducers from '../reducers/todoListReducers';
 
 const rootReducer = combineReducers({
-    conuterReducer
+    conuterReducer,
+    todoListReducers,
 });
 
 export default createStore(rootReducer);
