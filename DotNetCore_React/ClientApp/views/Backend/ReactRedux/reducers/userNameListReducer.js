@@ -32,6 +32,7 @@ const initData = {
 export default function userNameListReducer(state = initData, action) {
     switch (action.type) {
         case "USERSEELCT":
+        console.log("USERSEELCT")
             state = {
                 ...state,
                 selectUser: action.user,

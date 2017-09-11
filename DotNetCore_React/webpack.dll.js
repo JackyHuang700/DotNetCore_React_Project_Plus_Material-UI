@@ -53,7 +53,8 @@ module.exports = {
             'react-datepicker',
             "moment",
             "./node_modules/react-datepicker/dist/react-datepicker.css",
-
+            "react-redux",
+            "redux",
         ],
     },
     resolve: {

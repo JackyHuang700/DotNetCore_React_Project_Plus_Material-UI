@@ -87,8 +87,8 @@ if (NODE_ENV === 'dev') {
 module.exports = {
     // devtool: 'source-map',
     // devtool: 'cheap-eval-source-map',
-    // devtool: 'eval-source-map',
-    devtool: 'cheap-module-eval-source-map',
+    devtool: 'eval-source-map',
+    // devtool: 'cheap-module-eval-source-map',
     // devtool: 'cheap-eval-source-map',
     entry: {
         'Main': entryFile,
