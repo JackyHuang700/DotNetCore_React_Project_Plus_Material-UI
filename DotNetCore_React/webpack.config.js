@@ -36,6 +36,11 @@ if (NODE_ENV === 'dev') {
             loaders: ['babel-loader?cacheDirectory=true'],
             threadPool: happThreadPool
         }),
+
+        new webpack.DllReferencePlugin({
+            context: __dirname,
+            manifest: require('./wwwroot/dist/commons-manifest.json'),
+        }),
     ]);
 } else if (NODE_ENV === 'product') {
     plugins = plugins.concat([
@@ -96,7 +101,8 @@ module.exports = {
     output: {
         path: path.join(__dirname, bundleOutputDir),
         filename: '[name].js',
-        publicPath: '/dist/'
+        chunkFilename: "[name].[chunkhash:8].chunk.js",
+        publicPath: '/dist/',
     },
     context: __dirname,
     devServer: {
@@ -106,7 +112,7 @@ module.exports = {
         // noInfo: true,
         inline: true,
         open: true,
-        openPage: 'MaterialUI',
+        openPage: 'ReactRedux',
         hot: true,
         hotOnly: true,
         proxy: {
