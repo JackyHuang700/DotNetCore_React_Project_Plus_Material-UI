@@ -9,16 +9,13 @@ import '../node_modules/react-bootstrap-table/dist/react-bootstrap-table-all.min
 
 //material-ui
 
-import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import getMuiTheme from 'material-ui/styles/getMuiTheme'
 
 
 //redux
 import { Provider } from 'react-redux';
 import configureStore from './views/Backend/ReactRedux/store/configureStore';
-
-const theme = createMuiTheme({
-
-});
 
 
 
@@ -27,7 +24,7 @@ const renderApp = appRoutes => {
   ReactDOM.render((
     <AppContainer>
       <Provider store={configureStore}>
-        <MuiThemeProvider theme={theme}>
+      <MuiThemeProvider muiTheme={getMuiTheme()}>
           <Router history={history}>
             <div>
               {appRoutes}

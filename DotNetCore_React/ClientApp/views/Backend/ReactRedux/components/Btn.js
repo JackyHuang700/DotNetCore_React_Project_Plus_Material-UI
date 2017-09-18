@@ -1,24 +1,39 @@
-import React, { Component } from 'react';
+// import React, { Component } from 'react';
+
+// //Material-UI
+// import Button from 'material-ui/Button';
+
+// export default class Btn extends Component {
+
+//     constructor(props) {
+//         super(props);
+//     }
 
 
-export default class Btn extends Component {
+//     render() {
 
-    constructor(props) {
-        super(props);
-    }
+//         const {
+//             increment,
+//             decrement,
+//          } = this.props;
+
+//         return (
+//             <div>
 
 
-    render() {
+//                 <div>
+//                     <Button raised color="primary" onClick={increment}>
+//                         +
+//       </Button>
+//                 </div>
+//                 <div>
+//                     <Button raised color="accent" onClick={decrement}>
+//                         -
+//       </Button>
+//                 </div>
 
-        const { increment,
-            decrement } = this.props;
-
-        return (
-            <div>
-                <button onClick={increment}> + </button>
-                <button onClick={decrement}> - </button>
-            </div>
-        );
-    }
-}
+//             </div>
+//         );
+//     }
+// }
 

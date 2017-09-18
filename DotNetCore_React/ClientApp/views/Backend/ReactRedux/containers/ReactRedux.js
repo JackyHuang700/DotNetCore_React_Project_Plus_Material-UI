@@ -11,6 +11,10 @@ import * as counterAction from '../actions/counterAction';
 import TodoList from './TodoList';
 import UserNameList from './UserNameList';
 
+//redux form
+import SimpleForm from "./ReduxForm";
+
+
 
 class ReactRedux extends Component {
 
@@ -28,6 +32,7 @@ class ReactRedux extends Component {
 
         return (
             <div>
+                <h1>實作Redux技術</h1>
                 <h1>計數器</h1>
                 <Show number={counter.number} />
                 <Btn
@@ -40,6 +45,9 @@ class ReactRedux extends Component {
                 <hr />
                 <h1>Username List</h1>
                 <UserNameList />
+
+                <h1>ReduxForm</h1>
+                <SimpleForm />
             </div>
         );
     }
@@ -62,3 +70,5 @@ const mapDispatchToProps = (dispatch) => {
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(ReactRedux);
+
+

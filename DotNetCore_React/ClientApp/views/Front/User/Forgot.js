@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import {Auth} from '../../../helpers/auth'
+import { Auth } from '../../../helpers/auth'
 import history from '../../../history'
 import EasyForm, { Field, FieldGroup } from 'react-easyform';
 import TextInput from '../../../components/General/Forms/TextInput';
@@ -17,11 +17,11 @@ class Forgot extends Component {
       email: '',
     };
 
-      this.handleInputChange = this.handleInputChange.bind(this);
-      this.submit = this.submit.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.submit = this.submit.bind(this);
   }
 
-   handleInputChange(event) {
+  handleInputChange(event) {
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
@@ -38,16 +38,16 @@ class Forgot extends Component {
     } = this.state;
 
     axios({
-        url: '/api/WebApi/forgot',
-        method: 'post',
-        data: {
+      url: '/api/WebApi/forgot',
+      method: 'post',
+      data: {
         userName: userName,
         email: email
-        }
+      }
     }).then((result) => {
-        alert(result.data.message);    
+      alert(result.data.message);
     }).catch((error) => {
-        console.log(error)
+      console.log(error)
     });
     event.preventDefault();
     return false;
@@ -62,13 +62,13 @@ class Forgot extends Component {
           <div className="row justify-content-center">
             <div className="col-md-8">
               <div className="card-group mb-0">
-              <form className="col-md-12" onSubmit={this.submit}>
-                <div className="card p-4">
-                  <div className="card-block">
-                    <h1>Forgot</h1>
-                    <p className="text-muted">忘記密碼</p>
+                <form className="col-md-12" onSubmit={this.submit}>
+                  <div className="card p-4">
+                    <div className="card-block">
+                      <h1>Forgot</h1>
+                      <p className="text-muted">忘記密碼</p>
 
-                    <TextInput name="userName"
+                      <TextInput name="userName"
                         labelCustom={<span className="input-group-addon"><i className="icon-user"></i></span>}
                         divClassName="input-group mb-3"
                         className="form-control"
@@ -80,30 +80,30 @@ class Forgot extends Component {
                         is_Table={false}
                         placeholder="userName" />
 
-                    <TextInput name="email"
+                      <TextInput name="email"
                         labelCustom={<span className="input-group-addon"><i className="icon-envelope"></i></span>}
                         divClassName="input-group mb-4"
                         className="form-control"
                         display={this.props.display_email}
                         required={this.props.required_email}
                         pattern={/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/}
-                        validMessage={{ required: 'email is reduired.', pattern: '郵件格式錯誤'  }}
+                        validMessage={{ required: 'email is reduired.', pattern: '郵件格式錯誤' }}
                         onInput={this.handleInputChange}
                         value={this.state.email}
                         is_Table={false}
                         placeholder="email" />
 
-                    <div className="row">
-                      <div className="col-6">
-                        <button className="btn btn-primary px-4" disabled={$invalid ? 'disabled' : false}>送出</button>
-                      </div>
-                      <div className="offset-4 col-2">
-                        <Button type="button" color="warning" onClick={() => e = history.goBack()}>返回</Button>
+                      <div className="row">
+                        <div className="col-6">
+                          <button className="btn btn-primary px-4" disabled={$invalid ? 'disabled' : false}>送出</button>
+                        </div>
+                        <div className="offset-4 col-2">
+                          <Button type="button" color="warning" onClick={() => e = history.goBack()}>返回</Button>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                </form>        
+                </form>
               </div>
             </div>
           </div>
@@ -116,9 +116,9 @@ class Forgot extends Component {
 export default EasyForm(Forgot, 2);
 
 Forgot.defaultProps = {
-    display_userName: true,
-    display_email: true,
+  display_userName: true,
+  display_email: true,
 
-    required_userName: true,
-    required_email: true,
+  required_userName: true,
+  required_email: true,
 }

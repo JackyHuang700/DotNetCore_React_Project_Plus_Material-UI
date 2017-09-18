@@ -111,13 +111,14 @@ module.exports = {
         // compress: true,
         // noInfo: true,
         inline: true,
-        open: true,
+        // open: true,
         openPage: 'ReactRedux',
         hot: true,
-        hotOnly: true,
+        // hotOnly: true,
         proxy: {
             '*': {
-                target: 'http://localhost:60658',
+                // target: 'http://localhost:60658',
+                target: 'http://localhost:5000',
             }
         },
         // watch: true,

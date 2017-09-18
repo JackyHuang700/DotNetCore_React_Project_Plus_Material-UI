@@ -2,6 +2,7 @@
   "name": "DotNetCore_React",
   "version": "0.0.0",
   "scripts": {
+    "gulp": "gulp",
     "compile": "webpack --config ./webpack.config.js",
     "compile:dll": "webpack --config ./webpack.dll.js",
     "compile:product": "cross-env NODE_ENV=product webpack --config ./webpack.config.js",
@@ -9,7 +10,8 @@
     "dev-watch": "",
     "dev-watch:server": "cross-env NODE_ENV=dev LOADER_ENV=happypack webpack-dev-server --progress --color --config ./webpack.config.js",
     "start": "concurrently \"npm run dotnet-watch\" \"npm run dev-watch\" ",
-    "start:dev": "npm run compile:dll & npm run dev-watch:server"
+    "start:dev:dll": "npm run compile:dll & npm run dev-watch:server",
+    "start:dev": "npm run dev-watch:server"
   },
   "devDependencies": {
     "@types/history": "4.5.1",
@@ -40,6 +42,7 @@
     "happypack": "^4.0.0-beta.5",
     "history": "^4.6.1",
     "json-loader": "0.5.4",
+    "material-ui": "^0.19.1",
     "node-sass": "^4.5.3",
     "react": "15.5.4",
     "react-addons-css-transition-group": "15.5.2",
@@ -60,8 +63,6 @@
   "dependencies": {
     "axios": "^0.16.2",
     "babel-runtime": "^6.25.0",
-    "material-ui": "^1.0.0-beta.8",
-    "material-ui-icons": "^1.0.0-beta.5",
     "moment": "^2.18.1",
     "query-string": "^5.0.0",
     "react-bootstrap-table": "^4.0.0",
@@ -71,6 +72,7 @@
     "react-easyform": "^0.2.0",
     "react-redux": "^5.0.6",
     "react-tap-event-plugin": "^2.0.1",
-    "redux": "^3.7.2"
+    "redux": "^3.7.2",
+    "redux-form": "^7.0.4"
   }
 }

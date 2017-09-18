@@ -86,6 +86,27 @@ class ContactUs_Edit extends Component {
         document.getElementById('btn').click();
     }
 
+    //CKEditor not Rerender value and bind CKEditor
+    RenderReply = () => {
+        if (this.state.viewModel.reply) {
+            return (
+                <CKEditor name="reply"
+                    labelName="回覆內容"
+                    display={this.props.display_reply}
+                    required={this.props.required_reply}
+                    validMessage={{ required: '回覆內容 is reduired.' }}
+                    onInput={this.HandleInputChange_By_LanList_CKEditor}
+
+                    value={this.state.viewModel.reply}
+                    placeholder="回覆"
+                />
+            );
+        }
+        else {
+            return (null);
+        }
+    }
+
 
     render() {
         const { params } = this.props.params;
@@ -218,15 +239,9 @@ class ContactUs_Edit extends Component {
                                             options={this.state.viewModel.createUser}
                                         />
 
-                                        <TextInput name="reply"
-                                            labelName="回覆內容"
-                                            display={this.props.display_reply}
-                                            required={this.props.required_reply}
-                                            validMessage={{ required: '回覆內容 is reduired.' }}
-                                            onInput={this.HandleInputChange}
-                                            value={this.state.viewModel.reply}
-                                            options={this.state.viewModel.reply}
-                                        />
+                                       
+
+                                        {this.RenderReply()}
 
                                     </tbody>
                                 </table>

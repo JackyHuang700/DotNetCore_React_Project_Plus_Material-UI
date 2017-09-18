@@ -8,7 +8,8 @@ import { EmptyRoute } from './routes/EmptyRoute'
 
 import Home from './views/Front/Home'
 
-import Login from './views/Front/User/Login'
+// import Login from './views/Front/User/Login'
+import Login from './views/Front/User/Login2'
 import Forgot from './views/Front/User/Forgot'
 import changePwd from './views/Front/User/changePwd'
 

@@ -1,31 +1,31 @@
-import React, { Component } from 'react';
-import Button from 'material-ui/Button';
-import Asdasd from './aa.js';
+// import React, { Component } from 'react';
+// import Button from 'material-ui/Button';
+// import Asdasd from './aa.js';
 
 
-export default class MaterialUI extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
+// export default class MaterialUI extends Component {
+//     constructor(props) {
+//         super(props);
+//         this.state = {
 
-        };
-    }
+//         };
+//     }
 
 
-    render() {
+//     render() {
 
-        return (
+//         return (
            
-                <div>
-                    <Asdasd />
+//                 <div>
+//                     <Asdasd />
 
                    
-                </div>
+//                 </div>
 
           
 
-        )
-    }
-}
+//         )
+//     }
+// }
 
 

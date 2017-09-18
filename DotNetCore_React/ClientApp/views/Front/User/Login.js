@@ -41,7 +41,8 @@ class Login extends Component {
     } = this.state;
 
     Auth.authenticate(userName,password,rememberMe,() => {
-      history.push('/Dashboard');
+      // history.push('/Dashboard');
+      history.push('/ReactRedux');
     });
 
     event.preventDefault();
