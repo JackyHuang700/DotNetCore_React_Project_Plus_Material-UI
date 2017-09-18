@@ -1,10 +1,39 @@
 import React, { Component } from 'react';
+import { Field, reduxForm } from 'redux-form'
 import axios from 'axios';
 import { Auth } from '../../../helpers/auth'
 import history from '../../../history'
-import EasyForm, { Field, FieldGroup } from 'react-easyform';
-import TextInput from '../../../components/General/Forms/TextInput';
-import { Button, ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import TextInput from '../../../components/General/Forms/TextInput-MaterialUI.js'
+import RaisedButton from 'material-ui/RaisedButton'
+
+
+
+
+
+
+const validate = values => {
+  const errors = {}
+  const requiredFields = [
+    'userName',
+    'email',
+
+  ]
+  requiredFields.forEach(field => {
+    if (!values[field]) {
+      errors[field] = 'Required'
+    }
+  })
+  if (
+      values.email &&
+      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
+  ) {
+      errors.email = 'email格式錯誤'
+  }
+  return errors
+}
+
+
+
 
 class Forgot extends Component {
 
@@ -13,23 +42,23 @@ class Forgot extends Component {
     super(props);
 
     this.state = {
-      userName: '',
-      email: '',
+      // userName: '',
+      // email: '',
     };
 
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.submit = this.submit.bind(this);
+    // this.handleInputChange = this.handleInputChange.bind(this);
+    // this.submit = this.submit.bind(this);
   }
 
-  handleInputChange(event) {
-    const target = event.target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    const name = target.name;
+  // handleInputChange(event) {
+  //   const target = event.target;
+  //   const value = target.type === 'checkbox' ? target.checked : target.value;
+  //   const name = target.name;
 
-    this.setState({
-      [name]: value
-    });
-  }
+  //   this.setState({
+  //     [name]: value
+  //   });
+  // }
 
   submit(event) {
     const {
@@ -54,21 +83,28 @@ class Forgot extends Component {
   }
 
   render() {
-    const { params } = this.props.params;
-    const { $invalid } = this.props.easyform.$invalid;
+
+    const {
+      handleSubmit,
+      pristine,
+      reset,
+      submitting,
+  } = this.props;
+    // const { params } = this.props.params;
+    // const { $invalid } = this.props.easyform.$invalid;
     return (
       <div className="app flex-row align-items-center">
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-md-8">
               <div className="card-group mb-0">
-                <form className="col-md-12" onSubmit={this.submit}>
+                <form className="col-md-12" onSubmit={handleSubmit(this.submit)}>
                   <div className="card p-4">
                     <div className="card-block">
-                      <h1>Forgot</h1>
+                      <h1 className="text-center">Forgot</h1>
                       <p className="text-muted">忘記密碼</p>
 
-                      <TextInput name="userName"
+                      {/* <TextInput name="userName"
                         labelCustom={<span className="input-group-addon"><i className="icon-user"></i></span>}
                         divClassName="input-group mb-3"
                         className="form-control"
@@ -91,14 +127,50 @@ class Forgot extends Component {
                         onInput={this.handleInputChange}
                         value={this.state.email}
                         is_Table={false}
-                        placeholder="email" />
+                        placeholder="email" /> */}
+
+
+
+                      <TextInput
+                        name="userName"
+                        label="userName"
+                        divClassName="input-group"
+                        labelCustom={<span className="input-group-addon  margin-top-bottom-30"><i className="icon-user"></i></span>}
+                        display={this.props.display_userName}
+                        required={this.props.required_userName}
+                        value={""}
+                      />
+
+
+                      <TextInput
+                        name="email"
+                        label="email"
+                        divClassName="input-group"
+                        labelCustom={<span className="input-group-addon  margin-top-bottom-30"><i className="icon-envelope"></i></span>}
+                        display={this.props.display_email}
+                        required={this.props.required_email}
+                        value={""}
+                      />
 
                       <div className="row">
                         <div className="col-6">
-                          <button className="btn btn-primary px-4" disabled={$invalid ? 'disabled' : false}>送出</button>
+                          <RaisedButton
+                            label="送出"
+                            primary={true}
+                            type="submit"
+                            disabled={pristine || submitting}
+                          />
+                          {/* <button className="btn btn-primary px-4" disabled={$invalid ? 'disabled' : false}>送出</button> */}
                         </div>
                         <div className="offset-4 col-2">
-                          <Button type="button" color="warning" onClick={() => e = history.goBack()}>返回</Button>
+                          <RaisedButton
+                            label="返回"
+                            secondary={true}
+                            type="button"
+                            onClick={() => e = history.goBack()}
+                            className="pull-right margin-12"
+                          />
+                          {/* <Button type="button" color="warning" onClick={() => e = history.goBack()}>返回</Button> */}
                         </div>
                       </div>
                     </div>
@@ -113,7 +185,11 @@ class Forgot extends Component {
   }
 }
 
-export default EasyForm(Forgot, 2);
+
+export default reduxForm({
+  form: 'ForgotForm', // a unique identifier for this form
+  validate,
+})(Forgot)
 
 Forgot.defaultProps = {
   display_userName: true,
