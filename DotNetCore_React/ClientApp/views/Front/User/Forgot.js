@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Auth } from '../../../helpers/auth'
 import history from '../../../history'
 import TextInput from '../../../components/General/Forms/TextInput-MaterialUI.js'
-import RaisedButton from 'material-ui/RaisedButton'
+import Button from 'material-ui/Button';
 
 
 
@@ -24,10 +24,10 @@ const validate = values => {
     }
   })
   if (
-      values.email &&
-      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
+    values.email &&
+    !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
   ) {
-      errors.email = 'email格式錯誤'
+    errors.email = 'email格式錯誤'
   }
   return errors
 }
@@ -154,7 +154,8 @@ class Forgot extends Component {
 
                       <div className="row">
                         <div className="col-6">
-                          <RaisedButton
+                          <Button
+                            raised
                             label="送出"
                             primary={true}
                             type="submit"
@@ -163,7 +164,8 @@ class Forgot extends Component {
                           {/* <button className="btn btn-primary px-4" disabled={$invalid ? 'disabled' : false}>送出</button> */}
                         </div>
                         <div className="offset-4 col-2">
-                          <RaisedButton
+                          <Button
+                            raised
                             label="返回"
                             secondary={true}
                             type="button"

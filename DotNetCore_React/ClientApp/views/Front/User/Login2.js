@@ -6,7 +6,7 @@ import TextInput from '../../../components/General/Forms/TextInput-MaterialUI.js
 import { Auth } from '../../../helpers/auth'
 import history from '../../../history'
 
-import RaisedButton from 'material-ui/RaisedButton'
+import Button from 'material-ui/Button';
 
 const validate = values => {
     const errors = {}
@@ -29,6 +29,9 @@ const validate = values => {
     // }
     return errors
 }
+
+
+
 
 const renderTextField = ({
     input,
@@ -94,7 +97,7 @@ const LoginForm = props => {
                                                         name="userName"
                                                         label="userName"
                                                         divClassName="input-group"
-                                                        labelCustom={<span className="input-group-addon  margin-top-bottom-30"><i className="icon-user"></i></span>}
+                                                        labelCustom={<span className="input-group-addon margin-16-6-26-6"><i className="icon-user"></i></span>}
                                                         display={props.display_userName}
                                                         required={props.required_userName}
 
@@ -104,39 +107,45 @@ const LoginForm = props => {
                                                         name="password"
                                                         label="password"
                                                         divClassName="input-group"
-                                                        labelCustom={<span className="input-group-addon margin-top-bottom-30"><i className="icon-lock"></i></span>}
+                                                        labelCustom={<span className="input-group-addon margin-16-6-26-6"><i className="icon-lock"></i></span>}
                                                         display={props.display_password}
                                                         required={props.required_password}
-
+                                                   
                                                         value={""}
                                                     />
 
 
                                                     <div className="col">
 
-                                                        <RaisedButton
-                                                            label="submit"
-                                                            primary={true}
+                                                        <Button
+                                                            raised
+                                                            color="primary"
                                                             type="submit"
                                                             disabled={pristine || submitting}
-                                                        />
-                                                        <RaisedButton
-                                                            label="Clear Values"
-                                                            secondary={true}
+                                                        >
+                                                            submit
+                                                        </Button>
+                                                        <Button
+                                                            raised
+                                                            color="accent"
                                                             type="button"
                                                             disabled={pristine || submitting}
                                                             onClick={reset}
                                                             className="margin-12"
-                                                        />
+                                                        >
+                                                            Clear Values
+                                                        </Button>
 
 
-                                                        <RaisedButton
-                                                            label="Forgot password?"
+                                                        <Button
+                                                            raised
                                                             secondary={true}
                                                             type="button"
                                                             onClick={forgot}
                                                             className="pull-right margin-12"
-                                                        />
+                                                        >
+                                                            Forgot password?
+                                                        </Button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -163,4 +172,9 @@ LoginForm.defaultProps = {
     display_userName: true,
     display_password: true,
     display_rememberMe: true,
+
+
+    required_userName: true,
+    required_password: true,
+    required_rememberMe: true,
 }

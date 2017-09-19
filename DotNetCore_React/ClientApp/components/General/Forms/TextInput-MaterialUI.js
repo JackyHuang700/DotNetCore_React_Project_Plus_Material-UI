@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import TextField from 'material-ui/TextField'
 import { Field } from 'redux-form'
 
+
 const renderTextField = ({
     input,
     label,
@@ -10,14 +11,15 @@ const renderTextField = ({
   }) =>
     // {
     //     debugger;
-        <TextField
-        hintText={label}
+    <TextField
+        label={label}
         floatingLabelText={label}
         errorText={touched && error}
+        required = {custom.required}
         {...input}
         {...custom}
     />
-    // }
+// }
 
 
 export default class TextInput extends Component {
