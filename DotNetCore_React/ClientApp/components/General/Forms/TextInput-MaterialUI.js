@@ -14,8 +14,9 @@ const renderTextField = ({
     <TextField
         label={label}
         floatingLabelText={label}
-        errorText={touched && error}
-        required = {custom.required}
+        error={touched && error}
+        helperText={(touched && error) && error}
+        required={custom.required}
         {...input}
         {...custom}
     />
