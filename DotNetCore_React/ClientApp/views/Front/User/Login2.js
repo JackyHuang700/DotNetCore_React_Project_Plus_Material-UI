@@ -8,31 +8,6 @@ import history from '../../../history'
 
 import Button from 'material-ui/Button';
 
-const validate = values => {
-    const errors = {}
-    const requiredFields = [
-        'userName',
-        'password',
-        'email',
-
-    ]
-    requiredFields.forEach(field => {
-        if (!values[field]) {
-            errors[field] = 'Required'
-        }
-    })
-    // if (
-    //     values.email &&
-    //     !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
-    // ) {
-    //     errors.email = 'Invalid email address'
-    // }
-    return errors
-}
-
-
-
-
 const renderTextField = ({
     input,
     label,
@@ -88,10 +63,6 @@ const LoginForm = props => {
                                         <form onSubmit={handleSubmit(Login)}>
                                             <div className="container">
                                                 <div className="row">
-
-
-
-
 
                                                     <TextInput
                                                         name="userName"
@@ -160,6 +131,23 @@ const LoginForm = props => {
             </div>
         </div>
     )
+}
+
+const validate = values => {
+    const errors = {}
+    const requiredFields = [
+        'userName',
+        'password',
+        'email',
+
+    ]
+    requiredFields.forEach(field => {
+        if (!values[field]) {
+            errors[field] = 'Required'
+        }
+    })
+  
+    return errors
 }
 
 export default reduxForm({

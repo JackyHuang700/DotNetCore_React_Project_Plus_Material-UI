@@ -6,35 +6,6 @@ import history from '../../../history'
 import TextInput from '../../../components/General/Forms/TextInput-MaterialUI.js'
 import Button from 'material-ui/Button';
 
-
-
-
-
-
-const validate = values => {
-  const errors = {}
-  const requiredFields = [
-    'userName',
-    'email',
-
-  ]
-  requiredFields.forEach(field => {
-    if (!values[field]) {
-      errors[field] = 'Required'
-    }
-  })
-  if (
-    values.email &&
-    !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
-  ) {
-    errors.email = 'email格式錯誤'
-  }
-  return errors
-}
-
-
-
-
 class Forgot extends Component {
 
 
@@ -135,10 +106,9 @@ class Forgot extends Component {
                         name="userName"
                         label="userName"
                         divClassName="input-group"
-                        labelCustom={<span className="input-group-addon  margin-top-bottom-30"><i className="icon-user"></i></span>}
+                        labelCustom={<span className="input-group-addon  margin-16-6-26-6"><i className="icon-user"></i></span>}
                         display={this.props.display_userName}
                         required={this.props.required_userName}
-                        value={""}
                       />
 
 
@@ -146,34 +116,32 @@ class Forgot extends Component {
                         name="email"
                         label="email"
                         divClassName="input-group"
-                        labelCustom={<span className="input-group-addon  margin-top-bottom-30"><i className="icon-envelope"></i></span>}
+                        labelCustom={<span className="input-group-addon  margin-16-6-26-6"><i className="icon-envelope"></i></span>}
                         display={this.props.display_email}
-                        required={this.props.required_email}
-                        value={""}
                       />
 
-                      <div className="row">
-                        <div className="col-6">
-                          <Button
-                            raised
-                            label="送出"
-                            primary={true}
-                            type="submit"
-                            disabled={pristine || submitting}
-                          />
-                          {/* <button className="btn btn-primary px-4" disabled={$invalid ? 'disabled' : false}>送出</button> */}
-                        </div>
-                        <div className="offset-4 col-2">
-                          <Button
-                            raised
-                            label="返回"
-                            secondary={true}
-                            type="button"
-                            onClick={() => e = history.goBack()}
-                            className="pull-right margin-12"
-                          />
-                          {/* <Button type="button" color="warning" onClick={() => e = history.goBack()}>返回</Button> */}
-                        </div>
+
+                      <div className="col">
+
+                        <Button
+                          raised
+                          color="primary"
+                          type="submit"
+                          disabled={pristine || submitting}
+                          className="margin-12"
+                        >
+                          送出
+                          </Button>
+                        {/* <button className="btn btn-primary px-4" disabled={$invalid ? 'disabled' : false}>送出</button> */}
+                        <Button
+                          raised
+                          type="button"
+                          onClick={() => e = history.goBack()}
+                          className="pull-right margin-12"
+                        >
+                          返回
+                          </Button>
+                        {/* <Button type="button" color="warning" onClick={() => e = history.goBack()}>返回</Button> */}
                       </div>
                     </div>
                   </div>
@@ -186,6 +154,29 @@ class Forgot extends Component {
     );
   }
 }
+
+
+const validate = values => {
+  const errors = {}
+  const requiredFields = [
+    'userName',
+    'email',
+
+  ]
+  requiredFields.forEach(field => {
+    if (!values[field]) {
+      errors[field] = 'Required'
+    }
+  })
+  if (
+    values.email &&
+    !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
+  ) {
+    errors.email = 'email格式錯誤'
+  }
+  return errors
+}
+
 
 
 export default reduxForm({
