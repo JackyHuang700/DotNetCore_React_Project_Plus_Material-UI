@@ -59,7 +59,7 @@ const LoginForm = props => {
                             <div className="col-md-12" >
                                 <div className="card p-4">
                                     <div className="card-block">
-                                        <h1 className="text-center">Login</h1>
+                                        <h1 className="text-center aaaaa">Login</h1>
                                         <form onSubmit={handleSubmit(Login)}>
                                             <div className="container">
                                                 <div className="row">
