@@ -28,6 +28,7 @@ gulp.task('sass', function () {
 //   gulp.watch('./scss/**/*.scss', ['browser-sync', 'sass']);
 // });
 
+//open port 3000
 gulp.task('browser-sync', ['sass'], function () {
   browserSync.init({
     proxy: "http://localhost:8080",
