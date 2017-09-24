@@ -7,11 +7,11 @@
  */
 
 // Import normalize
-@import "bootstrap/normalize";
+@import "bootstrap4/normalize";
 // Override Boostrap variables
 @import "bootstrap-variables";
 // Import Bootstrap source files
-@import "bootstrap/bootstrap";
+@import "bootstrap4/bootstrap";
 // If you want you can import bootstrap scss files directly from node_modules or bower_components.
 // To do this please remove @import "bootstrap/bootstrap"; and uncomment proper line.
 // Import Bootstrap source files from node_modules
