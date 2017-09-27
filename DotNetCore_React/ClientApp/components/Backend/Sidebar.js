@@ -52,6 +52,15 @@ class Sidebar extends Component {
           </li>
         </ul>
       </li>,
+        <li key='' className="nav-item nav-dropdown">
+        <a className="nav-link nav-dropdown-toggle" href="#" onClick={this.handleClick.bind(this)}><i className="icon-star"></i> 試做</a>
+        <ul className="nav-dropdown-items">
+          <li key='' className="nav-item">
+          <NavLink to={'/MaterialUI'} className="nav-link" activeClassName="active"><i className="icon-link"></i> MaterialUI</NavLink>
+          <NavLink to={'/ReactRedux'} className="nav-link" activeClassName="active"><i className="icon-link"></i> Redux</NavLink>
+          </li>
+        </ul>
+      </li>,
         <li key='7' className="nav-title">系統</li>,
         <li key='8' className="nav-item nav-dropdown">
           <a className="nav-link nav-dropdown-toggle" href="#" onClick={this.handleClick.bind(this)}><i className="icon-star"></i> 管理</a>
