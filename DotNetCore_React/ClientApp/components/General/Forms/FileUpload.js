@@ -148,10 +148,10 @@ class FileUpload extends Component {
 export default FileUpload;
 
 
-FileUpload.propTypes = {
-    acceptedFiles: React.PropTypes.string.isRequired,
-    postUrl: React.PropTypes.string.isRequired
-};
+// FileUpload.propTypes = {
+//     acceptedFiles: React.PropTypes.string.isRequired,
+//     postUrl: React.PropTypes.string.isRequired
+// };
 
 
 FileUpload.DefaultProps = {

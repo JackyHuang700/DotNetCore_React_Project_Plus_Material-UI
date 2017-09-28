@@ -57,7 +57,8 @@ class Sidebar extends Component {
         <ul className="nav-dropdown-items">
           <li key='' className="nav-item">
           <NavLink to={'/MaterialUI'} className="nav-link" activeClassName="active"><i className="icon-link"></i> MaterialUI</NavLink>
-          <NavLink to={'/ReactRedux'} className="nav-link" activeClassName="active"><i className="icon-link"></i> Redux</NavLink>
+          <NavLink to={'/MaterialUI'} className="nav-link" activeClassName="active"><i className="icon-link"></i> MaterialUI</NavLink>
+          <NavLink to={'/v16'} className="nav-link" activeClassName="active"><i className="icon-link"></i> v16</NavLink>
           </li>
         </ul>
       </li>,

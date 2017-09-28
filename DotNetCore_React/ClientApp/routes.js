@@ -62,6 +62,7 @@ import Product_Edit from './views/Backend/Product/Product_EDIT'
 import MaterialUI from './views/Backend/MaterialUI/MaterialUI'
 
 import ReactRedux from './views/Backend/ReactRedux/containers/ReactRedux'
+import v16 from './views/Backend/ReactV16/v16'
 /**
   * 
   * 已知Breadcrumb�呼�這隻
@@ -113,8 +114,8 @@ export default (
 
     <BackendRoute path='/MaterialUI' component={MaterialUI} />
 
-
     <BackendRoute path='/ReactRedux' component={ReactRedux} />
+    <BackendRoute path='/v16' component={v16} />
 
 
     <Route render={() => <h3>No Match Route</h3>} />
