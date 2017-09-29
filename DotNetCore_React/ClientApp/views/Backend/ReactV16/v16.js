@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+
+//Demo1
 class ErrorBoundary extends React.Component {
     constructor(props) {
         super(props);
@@ -57,6 +59,80 @@ class BuggyCounter extends React.Component {
 }
 
 
+//Demo2
+class ErrorComponent extends Component {
+    render() {
+        return (
+            <div>
+                <p>發生錯誤！</p>
+                <p>請找工程師進行除錯。</p>
+            </div>
+        );
+    }
+}
+
+class ShowCounter extends Component {
+    render() {
+        const {
+            counter,
+            handleClick
+        } = this.props;
+        if (counter === 5) {
+            // Simulate a JS error
+            throw new Error('I crashed!');
+        }
+
+        return (
+            <div>
+
+                <h1 onClick={handleClick}>
+                    {counter}
+                </h1>
+            </div>
+        );
+    }
+}
+
+
+class BuggyCounter2 extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            counter: 0,
+            isError: false,
+            error: null,
+            errorInfo: null,
+        };
+    }
+
+    componentDidCatch(error, errorInfo) {
+        // Catch errors in any components below and re-render with error message
+        this.setState({
+            error: error,
+            errorInfo: errorInfo,
+            isError: true,
+        })
+        // You can also log error messages to an error reporting service here
+    }
+
+
+    handleClick() {
+        this.setState(({ counter }) => ({
+            counter: counter + 1
+        }));
+    }
+
+    render() {
+
+        return (
+            this.state.isError ?
+                <ErrorComponent /> :
+                <ShowCounter {...this.state} handleClick={this.handleClick.bind(this)} />
+        );
+    }
+}
+
+
 
 //React V16
 //(1) lifecycle add componentDidCatch
@@ -94,6 +170,7 @@ export default class App extends React.Component {
     render() {
         return [
             <p>
+                <h3>Demo2</h3>
                 <b>
                     This is an example of error boundaries in React 16.
               <br /><br />
@@ -116,6 +193,11 @@ export default class App extends React.Component {
             <ErrorBoundary>
                 <BuggyCounter />
             </ErrorBoundary>,
+            <div>
+                <h3>Demo2</h3>
+            </div>,
+            <BuggyCounter2 />,
+           
         ]
     }
 }
